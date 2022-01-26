@@ -15,3 +15,5 @@ describe DockingStation do
     end
   end
 end
+
+b
