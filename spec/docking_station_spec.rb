@@ -14,6 +14,11 @@ describe DockingStation do
       bike = Bike.new
       expect(bike).to be_working
     end
+
+    it 'doesnt release broken bikes' do
+      bike = Bike.new
+      expect{subject.release_bike(bike)}.to eq 
+    end
   end
 
 describe "#dock" do 
