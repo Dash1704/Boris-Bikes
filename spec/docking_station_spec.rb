@@ -15,9 +15,14 @@ describe DockingStation do
       expect(bike).to be_working
     end
 
+
     it 'doesnt release broken bikes' do
       bike = Bike.new
-      expect{subject.release_bike(bike)}.to eq 
+      bike.report
+      # expect(bike).not_to be_working 
+      docking_station = DockingStation.new
+      docking_station.dock(bike)
+      expect {docking_station.release_bike}.to raise_error 'Bike is broken' 
     end
   end
 
@@ -31,7 +36,7 @@ describe "#dock" do
   it 'raises an error if docks full' do
     #use :: before the constant to be able to reach it inside the class
     DockingStation::DEFAULT_CAPACITY.times {subject.dock Bike.new}
-    
+
     expect {subject.dock Bike.new}.to raise_error "Docking station full"
   end
 end
@@ -45,6 +50,10 @@ describe "#initialization" do
     docking_station = DockingStation.new(10)
     10.times{ docking_station.dock Bike.new}
     expect {docking_station.dock Bike.new}.to raise_error "Docking station full"
+  end
+
+  it 'checks for working bikes' do
+    
   end
 end
 
