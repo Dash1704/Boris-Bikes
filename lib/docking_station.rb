@@ -33,6 +33,13 @@ class DockingStation
   def dock(bike)
     fail "Docking station full" if full?
     @bikes << bike
+    # if full?
+    #   fail "Docking station full"
+    # elsif bike.working?
+    #   @working_bikes << bike
+    # else
+    # #   @broken_bikes << bike
+    # end
   end
 
   private

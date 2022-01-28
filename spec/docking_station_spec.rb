@@ -39,6 +39,18 @@ describe "#dock" do
 
     expect {subject.dock Bike.new}.to raise_error "Docking station full"
   end
+
+  # it "checks for a working bike" do
+  #   bike = Bike.new
+  #   expect(bike).to be_working
+  # end
+
+  # it "checks for a broken bike" do
+  #   bike = Bike.new
+  #   bike.report
+  #   expect(subject.dock(bike)).to eq bike 
+  # end
+
 end
   
 describe "#initialization" do
@@ -50,10 +62,6 @@ describe "#initialization" do
     docking_station = DockingStation.new(10)
     10.times{ docking_station.dock Bike.new}
     expect {docking_station.dock Bike.new}.to raise_error "Docking station full"
-  end
-
-  it 'checks for working bikes' do
-    
   end
 end
 
