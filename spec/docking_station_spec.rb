@@ -24,7 +24,8 @@ describe "#dock" do
   end
 
   it 'raises an error if docks full' do
-    20.times {subject.dock Bike.new}
+    #use :: before the constant to be able to reach it inside the class
+    DockingStation::DEFAULT_CAPACITY.times {subject.dock Bike.new}
     expect {subject.dock Bike.new}.to raise_error "Docking station full"
   end
 end
