@@ -26,10 +26,22 @@ describe "#dock" do
   it 'raises an error if docks full' do
     #use :: before the constant to be able to reach it inside the class
     DockingStation::DEFAULT_CAPACITY.times {subject.dock Bike.new}
+    
     expect {subject.dock Bike.new}.to raise_error "Docking station full"
   end
 end
   
+describe "#initialization" do
+  it "has default capacity" do
+    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
+  
+  it 'capacity can be defined' do
+    docking_station = DockingStation.new(10)
+    10.times{ docking_station.dock Bike.new}
+    expect {docking_station.dock Bike.new}.to raise_error "Docking station full"
+  end
+end
 
 describe "#bike" do
   it 'returns docked bikes' do
